@@ -1,0 +1,14 @@
+{
+  "name": "imanager",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "imanager",
+  "workspaceFolder": "/workspaces/imanager",
+  "features": {
+    "ghcr.io/devcontainers-contrib/features/apt-get-packages:1": {
+      "packages": "vim,iputils-ping,iputils-tracepath,zsh,ssh,netcat-openbsd,tmux"
+    },
+    "ghcr.io/devcontainers/features/common-utils": {
+      "upgradePackages": false
+    }
+  }
+}

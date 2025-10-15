@@ -1,0 +1,44 @@
+# Change whatever you need also you can run dev-lint to check some fundamentals are still working
+name: imanager
+services:
+  imanager:
+    build:
+      context: ../../
+      dockerfile: .devcontainer/local/Dockerfile
+    command: sleep infinity
+    dns:
+      - 172.24.0.250
+    volumes:
+      - ../..:/workspaces/imanager
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /run/host-services/ssh-auth.sock:/run/host-services/ssh-auth.sock
+    environment:
+      # The .env(*) files in your project folder override these variables
+      # you can comment out the .env files, move the configuration here
+      # mount over the .env files in volume section, depends on what workflow
+      # you want
+      DEVSPACE: true # useful for disabling some stuff in bin/setup and bin/boostrap and similar init scripts
+      SSH_AUTH_SOCK: /run/host-services/ssh-auth.sock
+      BUNDLE_PATH: /workspaces/imanager/.bundle
+      GEM_PATH: /workspaces/imanager/.bundle/ruby/3.3.0/gems
+      GEM_HOME: /workspaces/imanager/.bundle/ruby/3.3.0/gems
+      DISPLAY: xserver:0
+    env_file:
+      - ${HOME}/.devcontainers.env
+    labels:
+      # See https://doc.traefik.io/traefik/routing/providers/docker/#tcp-routers
+      # See https://doc.traefik.io/traefik/routing/providers/docker/#services
+      - "traefik.http.routers.imanager-http.rule=Host(`imanager.customink.d3v`)"
+      - "traefik.http.routers.imanager-http.entrypoints=web"
+      - "traefik.http.routers.imanager-http.service=imanager-http"
+
+      - "traefik.http.routers.imanager-https.rule=Host(`imanager.customink.d3v`)"
+      - "traefik.http.routers.imanager-https.entrypoints=websecure"
+      - "traefik.http.routers.imanager-https.tls=true"
+      - "traefik.http.routers.imanager-https.service=imanager-http"
+
+      - "traefik.http.services.imanager-http.loadbalancer.server.port=3000"
+networks:
+  default:
+    external: true
+    name: devcontainers

@@ -1,0 +1,56 @@
+The app would track projects at work. The contents of projects wouldn't be
+important to start. Most important is tracking communication about projects
+from team members.
+
+The app would:
+
+- Collect Slack messages from various channels that I'm a member of
+- Associate messages to projects
+- Summarize the messages about a project for the day
+
+I could use the app to:
+
+- Catch up on progress for each project
+- Determine if there hadn't been any movement on a project (and needed to follow up with an engineer)
+- Determine if there was a blocker that I should weigh in on
+
+1. Project Association: How do you envision messages getting associated to projects?
+
+This could be tricky. We'll need to infer the project from the context. Some things that we'll help us:
+
+- I can define projects and associate people to projects
+- Some projects have their own channels
+- There are usually key words or phrases that we use to refer to projects
+
+2. Scope of Slack Data:
+
+- Ultimately, all channels I'm in, but for an MVP, just specific channels
+
+- Direct messages included?
+  - Only messages where you're mentioned, or all channel activity?
+    - All channel activity
+
+3. Daily Summary Cadence:
+  - Should summaries be generated on-demand or automatically at a specific time?
+    - On demand
+  - Do you want historical summaries or just going forward from launch?
+    - Just going forward from launch
+
+4. Interface Preference:
+  - A CLI would be find to start
+
+5. GitHub/Email for MVP:
+  - Your outline mentions these sources initially but focuses on Slack. Should we start with Slack-only for MVP, or is it important to have at least one other source?
+
+6. Slack for MVP:
+  - Your outline mentions these sources initially but focuses on Slack. Should we start with Slack-only for MVP, or is it important to have at least one other source?
+
+7. Slack for production:
+  - Your outline mentions these sources initially but focuses on Slack. Should we start with Slack-only for production, or is it important to have at least one other source?
+    - Just Slack for the MVP; my goal is to get a feel for the tech stack
+
+Some other suggestions:
+
+- Ruby and Rails is my strongest language/framework
+
+
