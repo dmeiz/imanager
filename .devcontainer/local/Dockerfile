@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     default-mysql-client \
     git \
     curl \
+    libyaml-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Rails
