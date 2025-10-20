@@ -4,9 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-imanager is a CLI application for engineering managers to track Slack communications across projects, with AI-powered message classification and daily summaries.
+imanager is a CLI application for engineering managers to track Slack
+communications across projects, with AI-powered message classification and
+daily summaries.
 
-**See plan.md for**: Full architecture, data models, implementation phases, and project vision.
+**See plan/index.md for**: Full architecture, data models, implementation phases, and project vision.
 
 ## Development Environment
 
@@ -32,6 +34,7 @@ dev-exec 'bin/rake test'
 ## Common Commands
 
 ### Database
+
 ```bash
 dev-exec 'bin/rails db:create'
 dev-exec 'bin/rails db:migrate'
@@ -39,12 +42,14 @@ dev-exec 'bin/rails db:reset'
 ```
 
 ### Testing
+
 ```bash
 dev-exec 'bin/rake test'
 dev-exec 'bin/rake test TEST=test/models/project_test.rb'
 ```
 
 ### Background Jobs
+
 ```bash
 dev-exec 'bundle exec sidekiq'
 ```
@@ -66,6 +71,3 @@ Database config is already set in docker-compose.yml.
 - **Manual sync**: Not real-time
 - **Background classification**: Message-to-project association runs async via Sidekiq
 
-## Implementation Status
-
-Devcontainer is configured. Rails app not yet initialized. See plan.md Phase 1 for next steps.
