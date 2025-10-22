@@ -71,3 +71,10 @@ Database config is already set in docker-compose.yml.
 - **Manual sync**: Not real-time
 - **Background classification**: Message-to-project association runs async via Sidekiq
 
+## Development Plan
+
+The plan is captured in the plan directory. plan/index.md provides a high-level
+overview of the project. Individual development steps are captured in numbered
+files, for example:
+
+- 000-slack-fetch.md

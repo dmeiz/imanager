@@ -1,2 +1,6 @@
 .bundle
 tmp
+log
+
+# Environment variables with secrets
+.env*.local
