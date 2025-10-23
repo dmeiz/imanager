@@ -11,7 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 2025_10_22_015936) do
-  create_table "messages", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "messages", force: :cascade do |t|
     t.string "slack_message_id"
     t.string "channel_id"
     t.bigint "user_id"
@@ -23,26 +23,26 @@ ActiveRecord::Schema[7.1].define(version: 2025_10_22_015936) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "people", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "people", force: :cascade do |t|
     t.string "name"
     t.string "slack_user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "people_projects", id: false, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "person_id", null: false
-    t.bigint "project_id", null: false
+  create_table "people_projects", id: false, force: :cascade do |t|
+    t.integer "person_id", null: false
+    t.integer "project_id", null: false
   end
 
-  create_table "projects", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "projects", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "slack_channels", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "slack_channels", force: :cascade do |t|
     t.string "channel_id"
     t.string "channel_name"
     t.datetime "created_at", null: false

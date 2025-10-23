@@ -17,6 +17,7 @@ services:
       # you can comment out the .env files, move the configuration here
       # mount over the .env files in volume section, depends on what workflow
       # you want
+      # Note: SQLite is used for database (no DATABASE_HOST/PORT/USER/PASS needed)
       DEVSPACE: true # useful for disabling some stuff in bin/setup and bin/boostrap and similar init scripts
       SSH_AUTH_SOCK: /run/host-services/ssh-auth.sock
       BUNDLE_PATH: /workspaces/imanager/.bundle

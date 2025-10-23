@@ -13,7 +13,7 @@ daily summaries.
 ## Development Environment
 
 This project runs in a **devcontainer**:
-- Ruby 3.3 / Rails 7.1 / MySQL 8.0
+- Ruby 3.3 / Rails 7.1 / SQLite 3
 - All Ruby commands must use: `dev-exec '<command>'`
 
 Examples:
@@ -29,7 +29,7 @@ dev-exec 'bin/rake test'
 
 **Key Models**: Projects ↔ ProjectMessages (with confidence scores) ↔ Messages. See plan.md for complete schema.
 
-**Key Gems**: slack-ruby-client, anthropic/ruby-openai, sidekiq, mysql2
+**Key Gems**: slack-ruby-client, anthropic/ruby-openai, sidekiq, sqlite3
 
 ## Common Commands
 
@@ -62,7 +62,36 @@ SLACK_API_TOKEN=xoxb-...
 ANTHROPIC_API_KEY=sk-ant-...  # or OPENAI_API_KEY
 ```
 
-Database config is already set in docker-compose.yml.
+**Database**: SQLite databases are stored as files in `var/` directory:
+- `var/development.sqlite3` - Development database
+- `var/test.sqlite3` - Test database
+- `var/production.sqlite3` - Production database
+
+**Backups**: Simply copy the .sqlite3 file:
+```bash
+cp var/production.sqlite3 backups/prod_$(date +%Y%m%d).sqlite3
+```
+
+## Running in "Production" Mode
+
+To run a separate production instance on your laptop (independent from development):
+
+```bash
+# Set environment variables in .env.production.local
+# SLACK_API_TOKEN=xoxb-... (can use different token than dev)
+# ANTHROPIC_API_KEY=sk-ant-...
+
+# Run Rails server in production mode
+RAILS_ENV=production bin/rails server -p 3001
+
+# Run database migrations
+RAILS_ENV=production bin/rails db:migrate
+
+# Run console
+RAILS_ENV=production bin/rails console
+```
+
+Since SQLite uses local files, dev and production run completely independently with no Docker Compose or separate database container needed.
 
 ## Key Constraints
 

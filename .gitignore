@@ -2,5 +2,9 @@
 tmp
 log
 
+# SQLite databases
+var/*.sqlite3
+var/*.sqlite3-*
+
 # Environment variables with secrets
 .env*.local
